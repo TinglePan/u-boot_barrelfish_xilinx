@@ -50,3 +50,8 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# add by cx
+u-boot*
+cscope*
+tags
