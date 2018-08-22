@@ -2277,8 +2277,8 @@ static efi_status_t EFIAPI efi_open_protocol(
 		goto out;
 
     if (attributes != EFI_OPEN_PROTOCOL_TEST_PROTOCOL){
-        printf("u-boot(OpenProtocol): protocol_interface addr=0x%08x\n", handler->protocol_interface);
 		*protocol_interface = handler->protocol_interface;
+        printf("u-boot(OpenProtocol): protocol_interface addr=0x%08x and 0x%08x\n", *protocol_interface, protocol_interface);
     }
 out:
 	return EFI_EXIT(r);
