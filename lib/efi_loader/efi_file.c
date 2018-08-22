@@ -5,7 +5,6 @@
  *
  *  SPDX-License-Identifier:     GPL-2.0+
  */
-#define DEBUG
 
 #include <common.h>
 #include <charset.h>
@@ -537,7 +536,6 @@ efi_open_volume(struct efi_simple_file_system_protocol *this,
 {
 	struct file_system *fs = to_fs(this);
 
-    printf("Calling efi_open_volume\n");
 	EFI_ENTRY("%p, %p", this, root);
 
 	*root = file_open(fs, NULL, NULL, 0);
@@ -551,18 +549,12 @@ efi_simple_file_system(struct blk_desc *desc, int part,
 {
 	struct file_system *fs;
 
-    printf("u-boot: Calling efi_simple_file_system\n");
-    printf("u-boot: efi_open_volume addr is 0x%08x\n", efi_open_volume);
 	fs = calloc(1, sizeof(*fs));
 	fs->base.rev = EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_REVISION;
 	fs->base.open_volume = efi_open_volume;
 	fs->desc = desc;
 	fs->part = part;
 	fs->dp = dp;
-
-    printf("u-boot: file_protocol addr = 0x%08x\n", &fs->base);
-    printf("u-boot: REVISION: 0x%016lx\n", EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_REVISION);
-    //EFI_PRINT_GUID("u-boot GUID:", efi_sihhhple_file_system_protocol_guid);
 
 	return &fs->base;
 }
