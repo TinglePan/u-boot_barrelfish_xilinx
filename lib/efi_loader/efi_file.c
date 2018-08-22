@@ -562,7 +562,7 @@ efi_simple_file_system(struct blk_desc *desc, int part,
 
     printf("u-boot: file_protocol addr = 0x%08x\n", &fs->base);
     printf("u-boot: REVISION: 0x%016lx\n", EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_REVISION);
-    EFI_PRINT_GUID("u-boot GUID:", efi_simple_file_system_protocol_guid);
+    //EFI_PRINT_GUID("u-boot GUID:", efi_sihhhple_file_system_protocol_guid);
 
 	return &fs->base;
 }

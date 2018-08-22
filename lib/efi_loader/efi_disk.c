@@ -238,9 +238,10 @@ static void efi_disk_add_dev(const char *name,
 	if (ret != EFI_SUCCESS)
 		goto out_of_memory;
 	if (part >= 1) {
+        printf("u-boot(efi_disk_add_dev): calling efi_simple_file_system to create sfsp\n");
 		diskobj->volume = efi_simple_file_system(desc, part,
 							 diskobj->dp);
-        printf("u-boot(efi_disk_add_dev): efi_add_protocol volume addr=0x%08x\n", &diskobj->volume);
+        printf("u-boot(efi_disk_add_dev): return volume(sfsp) addr=0x%08x\n", &(diskobj->volume));
 		ret = efi_add_protocol(diskobj->parent.handle,
 				       &efi_simple_file_system_protocol_guid,
 				       &diskobj->volume);
