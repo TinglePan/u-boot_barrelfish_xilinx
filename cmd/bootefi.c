@@ -182,7 +182,6 @@ static efi_status_t do_bootefi_exec(void *efi, void *fdt,
 	/* Initialize and populate EFI object list */
 	if (!efi_obj_list_initalized)
     {
-        printf("Call into efi_init_obj_list\n");
 		efi_init_obj_list();
     }
 
